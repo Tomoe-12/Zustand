@@ -14,7 +14,7 @@ const BearBox = () => {
       <p>Bears: {bears}</p>
       <div>
         <button onClick={increasePopulation}>Add bear</button>
-        <button onClick={removeAllBears}>remove bear</button>
+        <button className="bg-red-500" onClick={removeAllBears}>remove bear</button>
       </div>
     </div>
   );
