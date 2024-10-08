@@ -1,5 +1,7 @@
 import BearBox from "./components/BearBox";
 import CatBox from "./components/CatBox";
+import CatBox2 from "./components/CatBox2";
+import CatController from "./components/CatController";
 
 const App = () => {
   return (
@@ -10,6 +12,12 @@ const App = () => {
       </div>
       <div>
         <CatBox/>
+      </div>
+      <div>
+        <CatBox2/>
+      </div>
+      <div>
+        <CatController/>
       </div>
     </div>
   );

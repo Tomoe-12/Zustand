@@ -26,6 +26,7 @@ const CatBox = () => {
       <p>Big Cats : {cats.bigCats}</p>
       <p>Small Cats : {cats.smallCats}</p>
       <p>Total : {summary()}</p>
+      <p>{Math.random()}</p>
       <div>
         <button onClick={increaseBigCats}>add big cats</button>
         <button onClick={increaseSmallCats}>add small cats</button>
