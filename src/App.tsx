@@ -11,13 +11,9 @@ const App = () => {
         <BearBox />
       </div>
       <div>
-        <CatBox/>
-      </div>
-      <div>
-        <CatBox2/>
-      </div>
-      <div>
-        <CatController/>
+        <CatBox />
+        <CatBox2 />
+        <CatController />
       </div>
     </div>
   );
