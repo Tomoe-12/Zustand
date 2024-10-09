@@ -12,7 +12,7 @@ const BearBox = () => {
 
   const [bgColor, setBgColor] = useState<
     "bg-green-500" | "bg-red-400" | undefined
-  >(undefined);
+  >(useFoodStore.getState().fish > 5 ? 'bg-green-500' : 'bg-red-400');
   // this usuage can cause unnesessary re-render so i commented it
   // const fish = useFoodStore((state) => state.fish);
 
@@ -29,13 +29,13 @@ const BearBox = () => {
     const unsub = useFoodStore.subscribe(
       (state) => state.fish,
       (fish, prevFish) => {
-        if (fish == prevFish) {
-          if (fish <= 5) {
-            setBgColor("bg-red-400");
-          } else {
-            setBgColor("bg-green-500");
-          }
-        }
+        // if (fish == prevFish) {
+        //   if (fish <= 5) {
+        //     setBgColor("bg-red-400");
+        //   } else {
+        //     setBgColor("bg-green-500");
+        //   }
+        // }
 
         if (prevFish <= 5 && fish > 5) {
           setBgColor("bg-green-500");
