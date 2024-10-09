@@ -1,5 +1,5 @@
 import useCatStore from "../stores/catStore";
-import { shallow } from "zustand/shallow";
+// import { shallow } from "zustand/shallow";
 
 const CatController = () => {
   //   const {  increaseBigCats, increaseSmallCats } = useCatStore();
