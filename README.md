@@ -48,3 +48,7 @@ export default tseslint.config({
   },
 })
 ```
+
+
+# Youtube tutorial link ( where i learn Zustand ) 
+https://youtube.com/playlist?list=PL1T-3Hf9FqXbH54aLLMWMpdn6OMa5TWOX&si=BNRUVFRlFYYSdC1u
