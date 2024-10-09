@@ -10,13 +10,14 @@ const App = () => {
       <h1>Zustand Tutorial</h1>
       <div>
         <BearBox />
-        <FoodBox/>
+        <FoodBox />
+        <CatBox />
       </div>
-      {/* <div>
+      <div>
         <CatBox />
         <CatBox2 />
         <CatController />
-      </div> */}
+      </div>
     </div>
   );
 };

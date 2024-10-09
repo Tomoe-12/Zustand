@@ -1,4 +1,4 @@
-import { create } from "zustand"
+import { create, StateCreator } from "zustand"
 import { immer } from "zustand/middleware/immer"
 import createSelectors from "../utils/createSelector"
 import { devtools, persist, subscribeWithSelector } from "zustand/middleware"
@@ -15,6 +15,36 @@ type TCatStoreState = {
     summary: () => string
 }
 
+const createCatSlice: StateCreator<
+    TCatStoreState,
+    [
+        ['zustand/immer', never],
+        ['zustand/devtools', unknown],
+        ['zustand/subscribeWithSelector', never],
+        ['zustand/persist', unknown]
+    ]
+> = (set, get) => ({
+    cats: {
+        bigCats: 0,
+        smallCats: 0,
+    },
+    increaseBigCats: () => {
+        set((state) => { state.cats.bigCats++ })
+    },
+    increaseSmallCats: () => {
+        set((state) => { state.cats.smallCats++ })
+    },
+    removeBigCats: () => {
+        set((state) => { state.cats.bigCats = 0 })
+    },
+    removeSmallCats: () => {
+        set((state) => { state.cats.smallCats = 0 })
+    },
+    summary: () => {
+        const total = get().cats.bigCats + get().cats.smallCats
+        return `There are ${total} cats in total !`
+    }
+})
 // const useCatStore = create<TCatStoreState>() ((set) => ({
 //     cats: {
 //         bigCats: 0,
@@ -61,30 +91,13 @@ const useCatStore = createSelectors(
         immer(
             devtools(
                 subscribeWithSelector(
-                    persist((set, get) => ({
-                        cats: {
-                            bigCats: 0,
-                            smallCats: 0,
-                        },
-                        increaseBigCats: () => {
-                            set((state) => { state.cats.bigCats++ })
-                        },
-                        increaseSmallCats: () => {
-                            set((state) => { state.cats.smallCats++ })
-                        },
-                        removeBigCats: () => {
-                            set((state) => { state.cats.bigCats = 0 })
-                        },
-                        removeSmallCats: () => {
-                            set((state) => { state.cats.smallCats = 0 })
-                        },
-                        summary: () => {
-                            const total = get().cats.bigCats + get().cats.smallCats
-                            return `There are ${total} cats in total !`
+                    persist(
+                        createCatSlice
+                        , {
+                            name: 'cat store'
                         }
-                    }), {
-                        name: 'cat store'
-                    })), {
+                    )
+                ), {
                 enabled: true,
                 name: 'cat store'
             }))))
